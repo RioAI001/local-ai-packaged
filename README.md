@@ -62,6 +62,7 @@ Before you begin, make sure you have the following software installed:
 ## Installation
 
 Clone the repository and navigate to the project directory:
+
 ```bash
 git clone https://github.com/coleam00/local-ai-packaged.git
 cd local-ai-packaged
@@ -71,42 +72,44 @@ Before running the services, you need to set up your environment variables for S
 
 1. Make a copy of `.env.example` and rename it to `.env` in the root directory of the project
 2. Set the following required environment variables:
-   ```bash
-   ############
-   # N8N Configuration
-   ############
-   N8N_ENCRYPTION_KEY=
-   N8N_USER_MANAGEMENT_JWT_SECRET=
 
-   ############
-   # Supabase Secrets
-   ############
-   POSTGRES_PASSWORD=
-   JWT_SECRET=
-   ANON_KEY=
-   SERVICE_ROLE_KEY=
-   DASHBOARD_USERNAME=
-   DASHBOARD_PASSWORD=
-   POOLER_TENANT_ID=
-   ```
+```bash
+############
+# N8N Configuration
+############
+N8N_ENCRYPTION_KEY=
+N8N_USER_MANAGEMENT_JWT_SECRET=
+
+############
+# Supabase Secrets
+############
+POSTGRES_PASSWORD=
+JWT_SECRET=
+ANON_KEY=
+SERVICE_ROLE_KEY=
+DASHBOARD_USERNAME=
+DASHBOARD_PASSWORD=
+POOLER_TENANT_ID=
+```
 
 > [!IMPORTANT]
 > Make sure to generate secure random values for all secrets. Never use the example values in production.
 
 3. Set the following environment variables if deploying to production, otherwise leave commented:
-   ```bash
-   ############
-   # Caddy Config
-   ############
 
-   N8N_HOSTNAME=n8n.yourdomain.com
-   WEBUI_HOSTNAME=:openwebui.yourdomain.com
-   FLOWISE_HOSTNAME=:flowise.yourdomain.com
-   SUPABASE_HOSTNAME=:supabase.yourdomain.com
-   OLLAMA_HOSTNAME=:ollama.yourdomain.com
-   SEARXNG_HOSTNAME=searxng.yourdomain.com
-   LETSENCRYPT_EMAIL=your-email-address
-   ```   
+```bash
+############
+# Caddy Config
+############
+
+N8N_HOSTNAME=n8n.yourdomain.com
+WEBUI_HOSTNAME=:openwebui.yourdomain.com
+FLOWISE_HOSTNAME=:flowise.yourdomain.com
+SUPABASE_HOSTNAME=:supabase.yourdomain.com
+OLLAMA_HOSTNAME=:ollama.yourdomain.com
+SEARXNG_HOSTNAME=searxng.yourdomain.com
+LETSENCRYPT_EMAIL=your-email-address
+```
 
 ---
 
@@ -133,16 +136,18 @@ python start_services.py --profile gpu-amd
 If you're using a Mac with an M1 or newer processor, you can't expose your GPU to the Docker instance, unfortunately. There are two options in this case:
 
 1. Run the starter kit fully on CPU:
-   ```bash
-   python start_services.py --profile cpu
-   ```
+
+```bash
+python start_services.py --profile cpu
+```
 
 2. Run Ollama on your Mac for faster inference, and connect to that from the n8n instance:
-   ```bash
-   python start_services.py --profile none
-   ```
 
-   If you want to run Ollama on your mac, check the [Ollama homepage](https://ollama.com/) for installation instructions.
+```bash
+python start_services.py --profile none
+```
+
+If you want to run Ollama on your mac, check the [Ollama homepage](https://ollama.com/) for installation instructions.
 
 #### For Mac users running OLLAMA locally
 
